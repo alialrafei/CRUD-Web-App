@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <!DOCTYPE html>
     <html>
 
@@ -13,10 +14,13 @@
     <body>
         <div class="container">
             <h2>Enter Todo Details</h2>
-            <form method="post">
-                Description: <input type="text" name="description" required="required"/>
+            <form:form method="post" modelAttribute="todo">
+                Description: <form:input type="text" name="description" required="required" path="description"/> <!-- front end validation -->
+                <form:errors  path="description" cssClass="text-warning"/>
+                <form:input type="hidden" name="id"  path="id"/>
+                <form:input type="hidden" name="done"  path="done"/>
                 <input type="submit" value="Add" class="btn btn-success"/>
-            </form>
+            </form:form>
             
         </div>
 
